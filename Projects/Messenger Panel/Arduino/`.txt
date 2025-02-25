@@ -1,0 +1,49 @@
+/*
+PIN 2 and 3 - Buttons
+PIN 9 - Buzzers
+*/
+int f,d;
+
+void setup() 
+{
+}
+
+void loop() 
+{
+  for(f=635;f<=912;f++)
+  {
+    tone(9, f);
+    delay(d);
+    
+    if (digitalRead(2)==HIGH)
+      f=912;
+  
+    if (digitalRead(3)==HIGH)
+      d=0;
+    else
+      d=7;
+  }
+
+  for(f=911;f>=634;f--)
+  {
+    tone(9, f);
+    delay(d);
+    
+    if (digitalRead(2)==HIGH)
+      f=634;
+  
+    if (digitalRead(3)==HIGH)
+      d=0;
+    else
+      d=10;
+  }
+
+  while (digitalRead(2)==HIGH)
+  {
+    noTone(9);
+    tone(9, 250);
+    delay(5);
+    noTone(9);  
+    delay(5);
+  }
+}
